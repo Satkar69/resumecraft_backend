@@ -4,6 +4,7 @@ import {
   deleteUserDetail,
   getUserDetail,
   getUserDetails,
+  getUserDetailsByCurrentUser,
   updateUserDetail,
   uploadImage,
 } from "../controllers/userdetail.js";
@@ -15,6 +16,7 @@ const router = Router();
 
 router.route("/").get(getUserDetails);
 router.route("/create-userdetail").post(createUserDetail);
+router.route("/userdetails-by-currentuser").get(getUserDetailsByCurrentUser);
 
 router
   .route("/:id")
