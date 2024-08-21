@@ -5,6 +5,7 @@ import {
   deleteUdById,
   findUdById,
   updateUdById,
+  searchUdsByUser,
 } from "../services/userdetail.js";
 
 export const createUserDetail = asyncHandler(async (req, res, next) => {
@@ -14,7 +15,7 @@ export const createUserDetail = asyncHandler(async (req, res, next) => {
   const userdetail = await createUd(data);
   return res.status(201).json({
     status: "success",
-    statuscode: 200,
+    statusCode: 200,
     userdetail,
   });
 });
@@ -27,6 +28,18 @@ export const getUserDetails = asyncHandler(async (req, res, next) => {
     userdetails,
   });
 });
+
+export const getUserDetailsByCurrentUser = asyncHandler(
+  async (req, res, next) => {
+    const user_id = req.user._id;
+    const userdetails = await searchUdsByUser(user_id);
+    return res.status(200).json({
+      status: "success",
+      statusCode: 200,
+      userdetails,
+    });
+  }
+);
 
 export const getUserDetail = asyncHandler(async (req, res, next) => {
   const id = req.params.id;

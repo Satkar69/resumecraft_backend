@@ -25,6 +25,13 @@ export const findUdById = async (user_detail_id) => {
   return userdetail;
 };
 
+export const searchUdsByUser = async (user_id) => {
+  const userdetails = await RESUMEDB.UserDetail.find({
+    user: user_id,
+  });
+  return userdetails;
+};
+
 export const deleteUdById = async (user_detail_id) => {
   const userdetail = await RESUMEDB.UserDetail.findByIdAndDelete(
     user_detail_id
