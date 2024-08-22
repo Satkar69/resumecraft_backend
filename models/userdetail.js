@@ -29,7 +29,7 @@ const userdetail = new Schema({
   image: {
     type: String,
     trim: true,
-    default: "",
+    default: null,
   },
   socials: {
     type: [String],

@@ -9,11 +9,11 @@ const skills = new Schema({
   skill_name: {
     type: String,
     trim: true,
-    default: "",
+    default: null,
   },
   skill_percentage: {
     type: String,
-    default: "",
+    default: null,
   },
 });
 

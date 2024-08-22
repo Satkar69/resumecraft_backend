@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+nullimport mongoose from "mongoose";
 import { Schema } from "mongoose";
 
 const projects = new Schema({
@@ -9,12 +9,12 @@ const projects = new Schema({
   project_title: {
     type: String,
     trim: true,
-    default: "",
+    default: null,
   },
   project_desc: {
     type: String,
     trim: true,
-    default: "",
+    default: null,
   },
   links: {
     type: [String],

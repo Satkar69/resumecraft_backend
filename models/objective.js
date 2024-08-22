@@ -8,7 +8,7 @@ const objective = new Schema({
   },
   details: {
     type: String,
-    default: "",
+    default: null,
   },
 });
 

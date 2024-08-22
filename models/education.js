@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+nullimport mongoose from "mongoose";
 import { Schema } from "mongoose";
 
 const education = new Schema({
@@ -9,17 +9,17 @@ const education = new Schema({
   course: {
     type: String,
     trim: true,
-    default: "",
+    default: null,
   },
   university: {
     type: String,
     trim: true,
-    default: "",
+    default: null,
   },
   gpa: {
     type: String,
     trim: true,
-    default: "",
+    default: null,
   },
   start_date: {
     type: Date,
