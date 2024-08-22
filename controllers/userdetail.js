@@ -15,7 +15,7 @@ export const createUserDetail = asyncHandler(async (req, res, next) => {
   const userdetail = await createUd(data);
   return res.status(201).json({
     status: "success",
-    statusCode: 200,
+    statusCode: 201,
     userdetail,
   });
 });

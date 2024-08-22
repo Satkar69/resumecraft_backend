@@ -12,7 +12,7 @@ export const createProject = asyncHandler(async (req, res, next) => {
   const project = await createProj(data);
   return res.status(201).json({
     status: "success",
-    statuscode: 200,
+    statuscode: 201,
     project,
   });
 });

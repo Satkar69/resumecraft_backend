@@ -12,7 +12,7 @@ export const createObjective = asyncHandler(async (req, res, next) => {
   const objective = await createObj(data);
   return res.status(201).json({
     status: "success",
-    statuscode: 200,
+    statuscode: 201,
     objective,
   });
 });

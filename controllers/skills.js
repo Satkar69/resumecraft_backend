@@ -12,7 +12,7 @@ export const createSkill = asyncHandler(async (req, res, next) => {
   const skill = await createSk(data);
   return res.status(201).json({
     status: "success",
-    statuscode: 200,
+    statuscode: 201,
     skill,
   });
 });

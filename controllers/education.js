@@ -12,7 +12,7 @@ export const createEducation = asyncHandler(async (req, res, next) => {
   const education = await createEdu(data);
   return res.status(201).json({
     status: "success",
-    statuscode: 200,
+    statuscode: 201,
     education,
   });
 });
