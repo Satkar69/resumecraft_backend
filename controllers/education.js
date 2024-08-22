@@ -38,11 +38,11 @@ export const getEducation = asyncHandler(async (req, res, next) => {
 
 export const deleteEducation = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const education = await deleteEduById(id);
+  await deleteEduById(id);
   return res.status(200).json({
     status: "success",
     statusCode: 200,
-    education,
+    message: `education with '_id: ${id}' deleted successfully!!`,
   });
 });
 

@@ -38,11 +38,11 @@ export const getExperience = asyncHandler(async (req, res, next) => {
 
 export const deleteExperience = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const experience = await deleteExpById(id);
+  await deleteExpById(id);
   return res.status(200).json({
     status: "success",
     statusCode: 200,
-    experience,
+    message: `experience with '_id: ${id}' deleted successfully!!`,
   });
 });
 

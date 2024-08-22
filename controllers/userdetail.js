@@ -53,11 +53,11 @@ export const getUserDetail = asyncHandler(async (req, res, next) => {
 
 export const deleteUserDetail = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const userdetail = await deleteUdById(id);
+  await deleteUdById(id);
   return res.status(200).json({
     status: "success",
     statusCode: 200,
-    userdetail,
+    message: `userdetail with '_id: ${id}' deleted successfully!!`,
   });
 });
 

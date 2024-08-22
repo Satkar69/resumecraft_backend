@@ -38,11 +38,11 @@ export const getObjective = asyncHandler(async (req, res, next) => {
 
 export const deleteObjective = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const objective = await deleteObjById(id);
+  await deleteObjById(id);
   return res.status(200).json({
     status: "success",
     statusCode: 200,
-    objective,
+    message: `objective with '_id: ${id}' deleted successfully!!`,
   });
 });
 

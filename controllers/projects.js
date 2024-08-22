@@ -38,11 +38,11 @@ export const getProject = asyncHandler(async (req, res, next) => {
 
 export const deleteProject = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const project = await deleteProjById(id);
+  await deleteProjById(id);
   return res.status(200).json({
     status: "success",
     statusCode: 200,
-    project,
+    message: `project with '_id: ${id}' deleted successfully!!`,
   });
 });
 

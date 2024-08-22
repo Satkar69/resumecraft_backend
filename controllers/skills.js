@@ -38,11 +38,11 @@ export const getSkill = asyncHandler(async (req, res, next) => {
 
 export const deleteSkill = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const skill = await deleteSkillById(id);
+  deleteSkillById(id);
   return res.status(200).json({
     status: "success",
     statusCode: 200,
-    skill,
+    message: `skill with '_id: ${id}' deleted successfully!!`,
   });
 });
 
