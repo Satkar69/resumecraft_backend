@@ -1,4 +1,3 @@
-nullimport mongoose from "mongoose";
 import { Schema } from "mongoose";
 
 const education = new Schema({
