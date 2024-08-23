@@ -46,3 +46,37 @@ export const updateEduById = async (edu_id, edu_data) => {
 
   return education;
 };
+
+export const findEduByUd = async (userdetailId) => {
+  const education = await RESUMEDB.Education.findOne({
+    userdetail: userdetailId,
+  }).select("-__v");
+  if (!education) {
+    throw new CustomError(
+      `education with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return education;
+};
+
+export const updateEduByUd = async (userdetailId, exp_data) => {
+  const education = await RESUMEDB.Education.findOneAndUpdate(
+    { userdetail: userdetailId },
+    exp_data,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!education) {
+    throw new CustomError(
+      `education with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return education;
+};

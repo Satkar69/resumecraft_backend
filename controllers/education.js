@@ -5,6 +5,8 @@ import {
   deleteEduById,
   findEduById,
   updateEduById,
+  findEduByUd,
+  updateEduByUd,
 } from "../services/education.js";
 
 export const createEducation = asyncHandler(async (req, res, next) => {
@@ -56,3 +58,26 @@ export const updateEducation = asyncHandler(async (req, res, next) => {
     education,
   });
 });
+
+export const getEducationByUserDetail = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  const education = await findEduByUd(id);
+  res.status(200).json({
+    status: "success",
+    statusCode: 200,
+    education,
+  });
+});
+
+export const updateEducationByUserDetail = asyncHandler(
+  async (req, res, next) => {
+    const id = req.params.id;
+    const data = req.body;
+    const education = await updateEduByUd(id, data);
+    res.status(200).json({
+      status: "success",
+      statusCode: 200,
+      education,
+    });
+  }
+);
