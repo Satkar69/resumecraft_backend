@@ -46,3 +46,37 @@ export const updateProjById = async (proj_id, proj_data) => {
 
   return project;
 };
+
+export const findProjByUd = async (userdetailId) => {
+  const project = await RESUMEDB.Projects.findOne({
+    userdetail: userdetailId,
+  }).select("-__v");
+  if (!project) {
+    throw new CustomError(
+      `project with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return project;
+};
+
+export const updateProjByUd = async (userdetailId, project_data) => {
+  const project = await RESUMEDB.Projects.findOneAndUpdate(
+    { userdetail: userdetailId },
+    project_data,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!project) {
+    throw new CustomError(
+      `project with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return project;
+};

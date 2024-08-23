@@ -10,7 +10,7 @@ import {
 export const createExperience = asyncHandler(async (req, res, next) => {
   const data = req.body;
   const experience = await createExp(data);
-  return res.status(201).json({
+  res.status(201).json({
     status: "success",
     statuscode: 201,
     experience,
@@ -19,7 +19,7 @@ export const createExperience = asyncHandler(async (req, res, next) => {
 
 export const getExperiences = asyncHandler(async (req, res, next) => {
   const experiences = await findAllExp();
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statuscode: 200,
     experiences,
@@ -29,7 +29,7 @@ export const getExperiences = asyncHandler(async (req, res, next) => {
 export const getExperience = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   const experience = await findExpById(id);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
     experience,
@@ -39,7 +39,7 @@ export const getExperience = asyncHandler(async (req, res, next) => {
 export const deleteExperience = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   await deleteExpById(id);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
     message: `experience with '_id: ${id}' deleted successfully!!`,
@@ -50,7 +50,7 @@ export const updateExperience = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   const data = req.body;
   const experience = await updateExpById(id, data);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
     experience,

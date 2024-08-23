@@ -42,3 +42,37 @@ export const updateSkillById = async (skill_id, skill_data) => {
 
   return skill;
 };
+
+export const findSkillByUd = async (userdetailId) => {
+  const skill = await RESUMEDB.Skills.findOne({
+    userdetail: userdetailId,
+  }).select("-__v");
+  if (!skill) {
+    throw new CustomError(
+      `skill with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return skill;
+};
+
+export const updateSkillByUd = async (userdetailId, skill_data) => {
+  const skill = await RESUMEDB.Skills.findOneAndUpdate(
+    { userdetail: userdetailId },
+    skill_data,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!skill) {
+    throw new CustomError(
+      `skill with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return skill;
+};

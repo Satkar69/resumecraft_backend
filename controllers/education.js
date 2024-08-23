@@ -10,7 +10,7 @@ import {
 export const createEducation = asyncHandler(async (req, res, next) => {
   const data = req.body;
   const education = await createEdu(data);
-  return res.status(201).json({
+  res.status(201).json({
     status: "success",
     statuscode: 201,
     education,
@@ -19,7 +19,7 @@ export const createEducation = asyncHandler(async (req, res, next) => {
 
 export const getEducations = asyncHandler(async (req, res, next) => {
   const educations = await findAllEdu();
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statuscode: 200,
     educations,
@@ -29,7 +29,7 @@ export const getEducations = asyncHandler(async (req, res, next) => {
 export const getEducation = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   const education = await findEduById(id);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
     education,
@@ -39,7 +39,7 @@ export const getEducation = asyncHandler(async (req, res, next) => {
 export const deleteEducation = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   await deleteEduById(id);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
     message: `education with '_id: ${id}' deleted successfully!!`,
@@ -50,7 +50,7 @@ export const updateEducation = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   const data = req.body;
   const education = await updateEduById(id, data);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
     education,
