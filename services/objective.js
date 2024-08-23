@@ -46,3 +46,37 @@ export const updateObjById = async (obj_id, obj_data) => {
 
   return objective;
 };
+
+export const findObjByUd = async (userdetailId) => {
+  const objective = await RESUMEDB.Objective.findOne({
+    userdetail: userdetailId,
+  }).select("-__v");
+  if (!objective) {
+    throw new CustomError(
+      `objective with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return objective;
+};
+
+export const updateObjByUd = async (userdetailId, obj_data) => {
+  const objective = await RESUMEDB.Objective.findOneAndUpdate(
+    { userdetail: userdetailId },
+    obj_data,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!objective) {
+    throw new CustomError(
+      `objective with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return objective;
+};
