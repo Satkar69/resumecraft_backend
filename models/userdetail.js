@@ -38,28 +38,24 @@ const userdetail = new Schema({
 });
 
 // Middleware to cascade delete all related documents when a userdetail is deleted
-userdetail.pre(
-  "deleteOne",
-  { document: true, query: false },
-  async function (next) {
-    try {
-      const userdetailId = this._id;
+userdetail.pre("findOneAndDelete", async function (next) {
+  try {
+    const userdetailId = this.getQuery()["_id"];
 
-      // Delete related documents from all relevant collections
-      await Promise.all([
-        RESUMEDB.Skills.deleteMany({ userdetail: userdetailId }),
-        RESUMEDB.Education.deleteMany({ userdetail: userdetailId }),
-        RESUMEDB.Experience.deleteMany({ userdetail: userdetailId }),
-        RESUMEDB.Projects.deleteMany({ userdetail: userdetailId }),
-        RESUMEDB.Objective.deleteMany({ userdetail: userdetailId }),
-      ]);
+    // Cascade delete related documents
+    await Promise.all([
+      RESUMEDB.Skills.deleteMany({ userdetail: userdetailId }),
+      RESUMEDB.Education.deleteMany({ userdetail: userdetailId }),
+      RESUMEDB.Experience.deleteMany({ userdetail: userdetailId }),
+      RESUMEDB.Projects.deleteMany({ userdetail: userdetailId }),
+      RESUMEDB.Objective.deleteMany({ userdetail: userdetailId }),
+    ]);
 
-      next();
-    } catch (error) {
-      next(error);
-    }
+    next();
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 const UserDetail = mongoose.model("userdetail", userdetail);
 
