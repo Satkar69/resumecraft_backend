@@ -46,3 +46,37 @@ export const updateExpById = async (exp_id, exp_data) => {
 
   return experience;
 };
+
+export const findExpByUd = async (userdetailId) => {
+  const experience = await RESUMEDB.Experience.findOne({
+    userdetail: userdetailId,
+  }).select("-__v");
+  if (!experience) {
+    throw new CustomError(
+      `experience with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return experience;
+};
+
+export const updateExpByUd = async (userdetailId, exp_data) => {
+  const experience = await RESUMEDB.Experience.findOneAndUpdate(
+    { userdetail: userdetailId },
+    exp_data,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!experience) {
+    throw new CustomError(
+      `experience with 'userdetail: ${userdetailId}' does not exist`,
+      404
+    );
+  }
+
+  return experience;
+};
