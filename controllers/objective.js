@@ -14,7 +14,7 @@ export const createObjective = asyncHandler(async (req, res, next) => {
   const objective = await createObj(data);
   res.status(201).json({
     status: "success",
-    statuscode: 201,
+    statusCode: 201,
     objective,
   });
 });
@@ -23,7 +23,7 @@ export const getObjectives = asyncHandler(async (req, res, next) => {
   const objectives = await findAllObj();
   res.status(200).json({
     status: "success",
-    statuscode: 200,
+    statusCode: 200,
     objectives,
   });
 });

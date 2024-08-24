@@ -14,7 +14,7 @@ export const createExperience = asyncHandler(async (req, res, next) => {
   const experience = await createExp(data);
   res.status(201).json({
     status: "success",
-    statuscode: 201,
+    statusCode: 201,
     experience,
   });
 });
@@ -23,7 +23,7 @@ export const getExperiences = asyncHandler(async (req, res, next) => {
   const experiences = await findAllExp();
   res.status(200).json({
     status: "success",
-    statuscode: 200,
+    statusCode: 200,
     experiences,
   });
 });

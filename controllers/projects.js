@@ -14,7 +14,7 @@ export const createProject = asyncHandler(async (req, res, next) => {
   const project = await createProj(data);
   res.status(201).json({
     status: "success",
-    statuscode: 201,
+    statusCode: 201,
     project,
   });
 });
@@ -23,7 +23,7 @@ export const getProjects = asyncHandler(async (req, res, next) => {
   const projects = await findAllProj();
   res.status(200).json({
     status: "success",
-    statuscode: 200,
+    statusCode: 200,
     projects,
   });
 });

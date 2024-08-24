@@ -14,7 +14,7 @@ export const createSkill = asyncHandler(async (req, res, next) => {
   const skill = await createSk(data);
   res.status(201).json({
     status: "success",
-    statuscode: 201,
+    statusCode: 201,
     skill,
   });
 });
@@ -23,7 +23,7 @@ export const getSkills = asyncHandler(async (req, res, next) => {
   const skills = await findAllSkill();
   res.status(200).json({
     status: "success",
-    statuscode: 200,
+    statusCode: 200,
     skills,
   });
 });

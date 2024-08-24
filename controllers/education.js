@@ -14,7 +14,7 @@ export const createEducation = asyncHandler(async (req, res, next) => {
   const education = await createEdu(data);
   res.status(201).json({
     status: "success",
-    statuscode: 201,
+    statusCode: 201,
     education,
   });
 });
@@ -23,7 +23,7 @@ export const getEducations = asyncHandler(async (req, res, next) => {
   const educations = await findAllEdu();
   res.status(200).json({
     status: "success",
-    statuscode: 200,
+    statusCode: 200,
     educations,
   });
 });

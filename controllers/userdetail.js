@@ -24,7 +24,7 @@ export const getUserDetails = asyncHandler(async (req, res, next) => {
   const userdetails = await findAllUd();
   res.status(200).json({
     status: "success",
-    statuscode: 200,
+    statusCode: 200,
     userdetails,
   });
 });
