@@ -15,6 +15,13 @@ import appRouter from "./routes/index.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Create __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -39,12 +46,13 @@ process.on("unhandledRejection", (err) => {
 global.RESUMEDB = db; // use the database orm globally without a need for importing everytime
 
 dotenv.config();
-
 // body parser for request body
 app.use(express.json());
 
 //Parse Cookie header and populate req.cookies with an object keyed by the cookie names
 app.use(cookieParser());
+
+app.use("/public", express.static(__dirname + "/public"));
 
 app.use(appRouter);
 
