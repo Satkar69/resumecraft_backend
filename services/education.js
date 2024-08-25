@@ -58,7 +58,7 @@ export const findEdusByUd = async (userdetailId) => {
     );
   }
 
-  return education;
+  return educations;
 };
 
 export const updateEduByUd = async (userdetailId, exp_data) => {

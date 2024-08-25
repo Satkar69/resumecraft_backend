@@ -58,7 +58,7 @@ export const findObjsByUd = async (userdetailId) => {
     );
   }
 
-  return objective;
+  return objectives;
 };
 
 export const updateObjByUd = async (userdetailId, obj_data) => {

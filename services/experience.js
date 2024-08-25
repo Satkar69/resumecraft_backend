@@ -58,7 +58,7 @@ export const findExpsByUd = async (userdetailId) => {
     );
   }
 
-  return experience;
+  return experiences;
 };
 
 export const updateExpByUd = async (userdetailId, exp_data) => {
