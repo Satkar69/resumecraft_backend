@@ -5,7 +5,7 @@ import {
   findProjById,
   deleteProjById,
   updateProjById,
-  findProjByUd,
+  findProjsByUd,
   updateProjByUd,
 } from "../services/projects.js";
 
@@ -59,13 +59,13 @@ export const updateProject = asyncHandler(async (req, res, next) => {
   });
 });
 
-export const getProjectByUserDetail = asyncHandler(async (req, res, next) => {
+export const getProjectsByUserDetail = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const project = await findProjByUd(id);
+  const projects = await findProjsByUd(id);
   res.status(200).json({
     status: "success",
     statusCode: 200,
-    project,
+    projects,
   });
 });
 

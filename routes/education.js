@@ -3,10 +3,9 @@ import {
   createEducation,
   deleteEducation,
   getEducation,
-  getEducationByUserDetail,
+  getEducationsByUserDetail,
   getEducations,
   updateEducation,
-  updateEducationByUserDetail,
 } from "../controllers/education.js";
 
 const router = Router();
@@ -22,9 +21,6 @@ router
   .put(updateEducation);
 
 // by userdetail
-router
-  .route("/edu-by-userdetail/:id")
-  .get(getEducationByUserDetail)
-  .put(updateEducationByUserDetail);
+router.route("/edus-by-userdetail/:id").get(getEducationsByUserDetail);
 
 export default router;

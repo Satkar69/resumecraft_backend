@@ -5,7 +5,7 @@ import {
   deleteExpById,
   findExpById,
   updateExpById,
-  findExpByUd,
+  findExpsByUd,
   updateExpByUd,
 } from "../services/experience.js";
 
@@ -59,14 +59,14 @@ export const updateExperience = asyncHandler(async (req, res, next) => {
   });
 });
 
-export const getExperienceByUserDetail = asyncHandler(
+export const getExperiencesByUserDetail = asyncHandler(
   async (req, res, next) => {
     const id = req.params.id;
-    const experience = await findExpByUd(id);
+    const experiences = await findExpsByUd(id);
     res.status(200).json({
       status: "success",
       statusCode: 200,
-      experience,
+      experiences,
     });
   }
 );

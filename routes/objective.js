@@ -3,10 +3,9 @@ import {
   createObjective,
   deleteObjective,
   getObjective,
-  getObjectiveByUserDetail,
+  getObjectivesByUserDetail,
   getObjectives,
   updateObjective,
-  updateObjectiveByUserDetail,
 } from "../controllers/objective.js";
 import authenticate from "../middlewares/auth.js";
 
@@ -23,9 +22,6 @@ router
   .put(updateObjective);
 
 // by userdetail
-router
-  .route("/obj-by-userdetail/:id")
-  .get(getObjectiveByUserDetail)
-  .put(updateObjectiveByUserDetail);
+router.route("/objs-by-userdetail/:id").get(getObjectivesByUserDetail);
 
 export default router;

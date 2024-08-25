@@ -43,8 +43,8 @@ export const updateSkillById = async (skill_id, skill_data) => {
   return skill;
 };
 
-export const findSkillByUd = async (userdetailId) => {
-  const skill = await RESUMEDB.Skills.findOne({
+export const findSkillsByUd = async (userdetailId) => {
+  const skill = await RESUMEDB.Skills.find({
     userdetail: userdetailId,
   }).select("-__v");
   if (!skill) {

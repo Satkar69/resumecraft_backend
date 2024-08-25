@@ -5,7 +5,7 @@ import {
   deleteObjById,
   findObjById,
   updateObjById,
-  findObjByUd,
+  findObjsByUd,
   updateObjByUd,
 } from "../services/objective.js";
 
@@ -59,15 +59,17 @@ export const updateObjective = asyncHandler(async (req, res, next) => {
   });
 });
 
-export const getObjectiveByUserDetail = asyncHandler(async (req, res, next) => {
-  const id = req.params.id;
-  const objective = await findObjByUd(id);
-  res.status(200).json({
-    status: "success",
-    statusCode: 200,
-    objective,
-  });
-});
+export const getObjectivesByUserDetail = asyncHandler(
+  async (req, res, next) => {
+    const id = req.params.id;
+    const objectives = await findObjsByUd(id);
+    res.status(200).json({
+      status: "success",
+      statusCode: 200,
+      objectives,
+    });
+  }
+);
 
 export const updateObjectiveByUserDetail = asyncHandler(
   async (req, res, next) => {

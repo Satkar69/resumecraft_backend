@@ -3,10 +3,9 @@ import {
   createSkill,
   deleteSkill,
   getSkill,
-  getSkillByUserDetail,
+  getSkillsByUserDetail,
   getSkills,
   updateSkill,
-  updateSkillByUserDetail,
 } from "../controllers/skills.js";
 
 const router = Router();
@@ -18,9 +17,6 @@ router.route("/create-skill").post(createSkill);
 router.route("/:id").get(getSkill).delete(deleteSkill).put(updateSkill);
 
 // by userdetail
-router
-  .route("/skill-by-userdetail/:id")
-  .get(getSkillByUserDetail)
-  .put(updateSkillByUserDetail);
+router.route("/skills-by-userdetail/:id").get(getSkillsByUserDetail);
 
 export default router;

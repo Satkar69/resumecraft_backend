@@ -3,10 +3,9 @@ import {
   createExperience,
   deleteExperience,
   getExperience,
-  getExperienceByUserDetail,
+  getExperiencesByUserDetail,
   getExperiences,
   updateExperience,
-  updateExperienceByUserDetail,
 } from "../controllers/experience.js";
 
 const router = Router();
@@ -22,9 +21,6 @@ router
   .put(updateExperience);
 
 // by userdetail
-router
-  .route("/exp-by-userdetail/:id")
-  .get(getExperienceByUserDetail)
-  .put(updateExperienceByUserDetail);
+router.route("/exps-by-userdetail/:id").get(getExperiencesByUserDetail);
 
 export default router;

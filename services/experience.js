@@ -47,8 +47,8 @@ export const updateExpById = async (exp_id, exp_data) => {
   return experience;
 };
 
-export const findExpByUd = async (userdetailId) => {
-  const experience = await RESUMEDB.Experience.findOne({
+export const findExpsByUd = async (userdetailId) => {
+  const experience = await RESUMEDB.Experience.find({
     userdetail: userdetailId,
   }).select("-__v");
   if (!experience) {

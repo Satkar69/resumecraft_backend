@@ -47,8 +47,8 @@ export const updateEduById = async (edu_id, edu_data) => {
   return education;
 };
 
-export const findEduByUd = async (userdetailId) => {
-  const education = await RESUMEDB.Education.findOne({
+export const findEdusByUd = async (userdetailId) => {
+  const education = await RESUMEDB.Education.find({
     userdetail: userdetailId,
   }).select("-__v");
   if (!education) {

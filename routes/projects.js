@@ -3,10 +3,9 @@ import {
   createProject,
   deleteProject,
   getProject,
-  getProjectByUserDetail,
+  getProjectsByUserDetail,
   getProjects,
   updateProject,
-  updateProjectByUserDetail,
 } from "../controllers/projects.js";
 
 const router = Router();
@@ -18,9 +17,6 @@ router.route("/create-proj").post(createProject);
 router.route("/:id").get(getProject).delete(deleteProject).put(updateProject);
 
 // by userdetail
-router
-  .route("/proj-by-userdetail/:id")
-  .get(getProjectByUserDetail)
-  .put(updateProjectByUserDetail);
+router.route("/projs-by-userdetail/:id").get(getProjectsByUserDetail);
 
 export default router;

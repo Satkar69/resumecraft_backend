@@ -47,8 +47,8 @@ export const updateProjById = async (proj_id, proj_data) => {
   return project;
 };
 
-export const findProjByUd = async (userdetailId) => {
-  const project = await RESUMEDB.Projects.findOne({
+export const findProjsByUd = async (userdetailId) => {
+  const project = await RESUMEDB.Projects.find({
     userdetail: userdetailId,
   }).select("-__v");
   if (!project) {

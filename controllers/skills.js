@@ -5,7 +5,7 @@ import {
   deleteSkillById,
   findSkillById,
   updateSkillById,
-  findSkillByUd,
+  findSkillsByUd,
   updateSkillByUd,
 } from "../services/skills.js";
 
@@ -59,13 +59,13 @@ export const updateSkill = asyncHandler(async (req, res, next) => {
   });
 });
 
-export const getSkillByUserDetail = asyncHandler(async (req, res, next) => {
+export const getSkillsByUserDetail = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const skill = await findSkillByUd(id);
+  const skills = await findSkillsByUd(id);
   res.status(200).json({
     status: "success",
     statusCode: 200,
-    skill,
+    skills,
   });
 });
 

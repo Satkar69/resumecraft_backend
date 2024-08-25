@@ -5,7 +5,7 @@ import {
   deleteEduById,
   findEduById,
   updateEduById,
-  findEduByUd,
+  findEdusByUd,
   updateEduByUd,
 } from "../services/education.js";
 
@@ -59,15 +59,17 @@ export const updateEducation = asyncHandler(async (req, res, next) => {
   });
 });
 
-export const getEducationByUserDetail = asyncHandler(async (req, res, next) => {
-  const id = req.params.id;
-  const education = await findEduByUd(id);
-  res.status(200).json({
-    status: "success",
-    statusCode: 200,
-    education,
-  });
-});
+export const getEducationsByUserDetail = asyncHandler(
+  async (req, res, next) => {
+    const id = req.params.id;
+    const educations = await findEdusByUd(id);
+    res.status(200).json({
+      status: "success",
+      statusCode: 200,
+      educations,
+    });
+  }
+);
 
 export const updateEducationByUserDetail = asyncHandler(
   async (req, res, next) => {

@@ -47,8 +47,8 @@ export const updateObjById = async (obj_id, obj_data) => {
   return objective;
 };
 
-export const findObjByUd = async (userdetailId) => {
-  const objective = await RESUMEDB.Objective.findOne({
+export const findObjsByUd = async (userdetailId) => {
+  const objective = await RESUMEDB.Objective.find({
     userdetail: userdetailId,
   }).select("-__v");
   if (!objective) {
