@@ -52,6 +52,7 @@ app.use(express.json());
 //Parse Cookie header and populate req.cookies with an object keyed by the cookie names
 app.use(cookieParser());
 
+// static file server, here for the images
 app.use("/public", express.static(__dirname + "/public"));
 
 app.use(appRouter);
