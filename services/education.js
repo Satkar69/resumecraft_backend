@@ -48,12 +48,12 @@ export const updateEduById = async (edu_id, edu_data) => {
 };
 
 export const findEdusByUd = async (userdetailId) => {
-  const education = await RESUMEDB.Education.find({
+  const educations = await RESUMEDB.Education.find({
     userdetail: userdetailId,
   }).select("-__v");
-  if (!education) {
+  if (!educations) {
     throw new CustomError(
-      `education with 'userdetail: ${userdetailId}' does not exist`,
+      `educations with 'userdetail: ${userdetailId}' does not exist`,
       404
     );
   }

@@ -48,12 +48,12 @@ export const updateObjById = async (obj_id, obj_data) => {
 };
 
 export const findObjsByUd = async (userdetailId) => {
-  const objective = await RESUMEDB.Objective.find({
+  const objectives = await RESUMEDB.Objective.find({
     userdetail: userdetailId,
   }).select("-__v");
-  if (!objective) {
+  if (!objectives) {
     throw new CustomError(
-      `objective with 'userdetail: ${userdetailId}' does not exist`,
+      `objectives with 'userdetail: ${userdetailId}' does not exist`,
       404
     );
   }

@@ -48,12 +48,12 @@ export const updateExpById = async (exp_id, exp_data) => {
 };
 
 export const findExpsByUd = async (userdetailId) => {
-  const experience = await RESUMEDB.Experience.find({
+  const experiences = await RESUMEDB.Experience.find({
     userdetail: userdetailId,
   }).select("-__v");
-  if (!experience) {
+  if (!experiences) {
     throw new CustomError(
-      `experience with 'userdetail: ${userdetailId}' does not exist`,
+      `experiences with 'userdetail: ${userdetailId}' does not exist`,
       404
     );
   }

@@ -44,17 +44,17 @@ export const updateSkillById = async (skill_id, skill_data) => {
 };
 
 export const findSkillsByUd = async (userdetailId) => {
-  const skill = await RESUMEDB.Skills.find({
+  const skills = await RESUMEDB.Skills.find({
     userdetail: userdetailId,
   }).select("-__v");
-  if (!skill) {
+  if (!skills) {
     throw new CustomError(
-      `skill with 'userdetail: ${userdetailId}' does not exist`,
+      `skills with 'userdetail: ${userdetailId}' does not exist`,
       404
     );
   }
 
-  return skill;
+  return skills;
 };
 
 export const updateSkillByUd = async (userdetailId, skill_data) => {
