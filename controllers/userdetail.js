@@ -13,7 +13,7 @@ export const createUserDetail = asyncHandler(async (req, res, next) => {
   const user = req.user;
   data.user = user._id;
   const userdetail = await createUd(data);
-  return res.status(201).json({
+  res.status(201).json({
     status: "success",
     statusCode: 201,
     userdetail,
@@ -22,9 +22,9 @@ export const createUserDetail = asyncHandler(async (req, res, next) => {
 
 export const getUserDetails = asyncHandler(async (req, res, next) => {
   const userdetails = await findAllUd();
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
-    statuscode: 200,
+    statusCode: 200,
     userdetails,
   });
 });
@@ -33,7 +33,7 @@ export const getUserDetailsByCurrentUser = asyncHandler(
   async (req, res, next) => {
     const user_id = req.user._id;
     const userdetails = await searchUdsByUser(user_id);
-    return res.status(200).json({
+    res.status(200).json({
       status: "success",
       statusCode: 200,
       userdetails,
@@ -44,7 +44,7 @@ export const getUserDetailsByCurrentUser = asyncHandler(
 export const getUserDetail = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   const userdetail = await findUdById(id);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
     userdetail,
@@ -54,10 +54,10 @@ export const getUserDetail = asyncHandler(async (req, res, next) => {
 export const deleteUserDetail = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   await deleteUdById(id);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
-    message: `userdetail with '_id: ${id}' deleted successfully!!`,
+    message: `userdetail deleted successfully!!`,
   });
 });
 
@@ -65,7 +65,7 @@ export const updateUserDetail = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   const data = req.body;
   const userdetail = await updateUdById(id, data);
-  return res.status(200).json({
+  res.status(200).json({
     status: "success",
     statusCode: 200,
     userdetail,
@@ -74,7 +74,7 @@ export const updateUserDetail = asyncHandler(async (req, res, next) => {
 
 export const uploadImage = asyncHandler(async (req, res, next) => {
   if (!req.file) {
-    return res.status(400).json({
+    res.status(400).json({
       status: "fail",
       statusCode: 400,
       message: "file must be uploaded!",
