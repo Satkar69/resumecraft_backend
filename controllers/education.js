@@ -44,7 +44,7 @@ export const deleteEducation = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     statusCode: 200,
-    message: `education with '_id: ${id}' deleted successfully!!`,
+    message: `education deleted successfully!!`,
   });
 });
 

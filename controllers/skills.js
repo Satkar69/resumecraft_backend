@@ -44,7 +44,7 @@ export const deleteSkill = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     statusCode: 200,
-    message: `skill with '_id: ${id}' deleted successfully!!`,
+    message: `skill deleted successfully!!`,
   });
 });
 

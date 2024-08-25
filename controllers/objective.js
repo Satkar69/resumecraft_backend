@@ -44,7 +44,7 @@ export const deleteObjective = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     statusCode: 200,
-    message: `objective with '_id: ${id}' deleted successfully!!`,
+    message: `objective deleted successfully!!`,
   });
 });
 

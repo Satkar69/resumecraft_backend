@@ -57,7 +57,7 @@ export const deleteUserDetail = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     statusCode: 200,
-    message: `userdetail with '_id: ${id}' deleted successfully!!`,
+    message: `userdetail deleted successfully!!`,
   });
 });
 
