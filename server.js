@@ -54,7 +54,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // cors
-const allowedUrls = ["http://localhost:55838"];
+const allowedUrls = ["http://localhost:55838"]; // just for test (flutter web origin)
 app.use(
   cors({
     origin: (origin, callback) => {
