@@ -14,6 +14,8 @@ import cors from "cors";
 import CustomError from "./utils/CustomError.js";
 import globalErrorHandler from "./errors/index.js";
 
+import morgan from "morgan";
+
 // database
 import "./database/index.js";
 import db from "./models/index.js";
@@ -51,24 +53,29 @@ global.RESUMEDB = db; // use the database orm globally without a need for import
 // body parser for request body
 app.use(express.json());
 
+// for logging http requests
+app.use(morgan("dev"));
+
 //Parse Cookie header and populate req.cookies with an object keyed by the cookie names
 app.use(cookieParser());
 
 // cors
-const allowedUrls = ["http://localhost:55838"]; // just for test (flutter web origin)
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (allowedUrls.includes(origin) || !origin) {
-        // Allow requests from allowed URLs or requests with no origin (e.g., from Postman)
-        callback(null, true);
-      } else {
-        callback(new CustomError("Origin Not Allowed", 401));
-      }
-    },
-    methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS",
-  })
-);
+// const allowedUrls = ["http://localhost:55838"]; // just for test (flutter web origin)
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (allowedUrls.includes(origin) || !origin) {
+//         // Allow requests from allowed URLs or requests with no origin (e.g., from Postman)
+//         callback(null, true);
+//       } else {
+//         callback(new CustomError("Origin Not Allowed", 401));
+//       }
+//     },
+//     methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS",
+//   })
+// );
+
+app.use(cors("*"));
 
 // static file server, here for the images
 app.use("/public", express.static(__dirname + "/public"));
