@@ -1,6 +1,8 @@
 import express from "express";
 
 import dotenv from "dotenv";
+dotenv.config();
+
 import cookieParser from "cookie-parser";
 
 import path from "path";
@@ -46,7 +48,6 @@ process.on("unhandledRejection", (err) => {
 
 global.RESUMEDB = db; // use the database orm globally without a need for importing everytime
 
-dotenv.config();
 // body parser for request body
 app.use(express.json());
 
