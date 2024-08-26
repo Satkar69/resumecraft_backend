@@ -1,5 +1,15 @@
 import express from "express";
 
+import dotenv from "dotenv";
+dotenv.config();
+
+import cookieParser from "cookie-parser";
+
+import path from "path";
+import { fileURLToPath } from "url";
+
+import cors from "cors";
+
 //error handling
 import CustomError from "./utils/CustomError.js";
 import globalErrorHandler from "./errors/index.js";
@@ -10,13 +20,6 @@ import db from "./models/index.js";
 
 //routes
 import appRouter from "./routes/index.js";
-
-//
-import dotenv from "dotenv";
-import cookieParser from "cookie-parser";
-
-import path from "path";
-import { fileURLToPath } from "url";
 
 // Create __dirname equivalent
 const __filename = fileURLToPath(import.meta.url);
@@ -45,12 +48,27 @@ process.on("unhandledRejection", (err) => {
 
 global.RESUMEDB = db; // use the database orm globally without a need for importing everytime
 
-dotenv.config();
 // body parser for request body
 app.use(express.json());
 
 //Parse Cookie header and populate req.cookies with an object keyed by the cookie names
 app.use(cookieParser());
+
+// cors
+const allowedUrls = ["http://localhost:55838"]; // just for test (flutter web origin)
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedUrls.includes(origin) || !origin) {
+        // Allow requests from allowed URLs or requests with no origin (e.g., from Postman)
+        callback(null, true);
+      } else {
+        callback(new CustomError("Origin Not Allowed", 401));
+      }
+    },
+    methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS",
+  })
+);
 
 // static file server, here for the images
 app.use("/public", express.static(__dirname + "/public"));
