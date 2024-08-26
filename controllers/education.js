@@ -11,7 +11,6 @@ import {
 
 export const createEducation = asyncHandler(async (req, res, next) => {
   const data = req.body;
-  console.log("create education here----->", data);
   const education = await createEdu(data);
   res.status(201).json({
     status: "success",
