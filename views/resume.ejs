@@ -89,9 +89,11 @@
 
     <div class="main-content">
       <div class="section">
-        <% if (objective?.details) { %>
         <h2>Objective</h2>
+        <% if (objective?.details) { %>
         <p><%= objective.details %></p>
+        <% } else { %>
+        <p>No objective provided.</p>
         <% } %>
       </div>
 

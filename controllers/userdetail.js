@@ -10,7 +10,6 @@ import {
 } from "../services/userdetail.js";
 import { promises as fs } from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import ejs from "ejs";
 import puppeteer from "puppeteer";
 
@@ -112,7 +111,7 @@ export const getResumeInfo = asyncHandler(async (req, res, next) => {
   await page.setContent(html, { waitUntil: "networkidle0" });
 
   // Generate a unique filename
-  const filename = `generated-resume-${id}.pdf`;
+  const filename = `${userdetail.userdetail[0].fullname}-${id}.pdf`;
   const filePath = path.join(process.cwd(), "public", "pdfs", filename);
 
   // Ensure the directory exists
@@ -136,5 +135,10 @@ export const getResumeInfo = asyncHandler(async (req, res, next) => {
     $push: { resume: `/pdfs/${filename}` },
   });
 
-  res.json({ downloadPath: `/pdfs/${filename}`, userdetail });
+  res.status(200).json({
+    status: "success",
+    statusCode: 200,
+    downloadPath: `/pdfs/${filename}`,
+    userdetail,
+  });
 });
