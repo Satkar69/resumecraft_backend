@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createUserDetail,
   deleteUserDetail,
+  getResumeInfo,
   getUserDetail,
   getUserDetails,
   getUserDetailsByCurrentUser,
@@ -35,5 +36,7 @@ router.route("/upload-image").post(upload, (req, res, next) => {
     }
   }
 });
+
+router.route("/generate-resume/:id").get(getResumeInfo);
 
 export default router;

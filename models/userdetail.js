@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
+// Disable strictPopulate globally
+mongoose.set("strictPopulate", false);
+
 const userdetail = new Schema({
   user: {
-    type: Schema.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "user",
   },
   fullname: {

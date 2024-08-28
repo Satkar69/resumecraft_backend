@@ -3,7 +3,7 @@ import { Schema } from "mongoose";
 
 const experience = new Schema({
   userdetail: {
-    type: Schema.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "userdetail",
   },
   company_name: {

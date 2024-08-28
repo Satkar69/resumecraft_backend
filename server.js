@@ -1,25 +1,17 @@
 import express from "express";
-
 import dotenv from "dotenv";
 dotenv.config();
-
 import cookieParser from "cookie-parser";
-
 import path from "path";
 import { fileURLToPath } from "url";
-
 import cors from "cors";
-
 //error handling
 import CustomError from "./utils/CustomError.js";
 import globalErrorHandler from "./errors/index.js";
-
 import morgan from "morgan";
-
 // database
 import "./database/index.js";
 import db from "./models/index.js";
-
 //routes
 import appRouter from "./routes/index.js";
 
@@ -28,6 +20,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+//set the view engine to ejs
+app.set("view engine", "ejs");
 
 const PORT = process.env.PORT || 3000;
 
@@ -58,22 +53,6 @@ app.use(morgan("dev"));
 
 //Parse Cookie header and populate req.cookies with an object keyed by the cookie names
 app.use(cookieParser());
-
-// cors
-// const allowedUrls = ["http://localhost:55838"]; // just for test (flutter web origin)
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       if (allowedUrls.includes(origin) || !origin) {
-//         // Allow requests from allowed URLs or requests with no origin (e.g., from Postman)
-//         callback(null, true);
-//       } else {
-//         callback(new CustomError("Origin Not Allowed", 401));
-//       }
-//     },
-//     methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS",
-//   })
-// );
 
 app.use(cors("*"));
 

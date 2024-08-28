@@ -2,6 +2,10 @@ import CustomError from "../utils/CustomError.js";
 
 export const createExp = async (exp_data) => {
   const experience = await RESUMEDB.Experience.create(exp_data);
+  // await RESUMEDB.UserDetail.updateOne(
+  //   { _id: experience.userdetail },
+  //   { $push: { experience: experience._id } }
+  // );
   return experience;
 };
 
