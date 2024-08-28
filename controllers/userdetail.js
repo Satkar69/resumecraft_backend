@@ -132,7 +132,7 @@ export const getResumeInfo = asyncHandler(async (req, res, next) => {
   // Send the download path to the client
 
   await RESUMEDB.User.findByIdAndUpdate(user_id, {
-    $push: { resume: `/pdfs/${filename}` },
+    $addToSet: { resume: `/pdfs/${filename}` },
   });
 
   res.status(200).json({
